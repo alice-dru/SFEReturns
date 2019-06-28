@@ -11,8 +11,13 @@ import numpy as np
 from scipy import stats
 
 #pathfile specified by the user
-mypath = "/Users/alicedrube/Documents/Uni /Master/SFM_Python/sfm_pri.csv"
+#dax 30 
+mypath = "/Users/alicedrube/Documents/Uni /Master/SFM_Python/sfm_dax.csv"
 path   = open(mypath, "r")
+
+#ftse100
+#mypath = "/Users/alicedrube/Documents/Uni /Master/SFM_Python/sfm_ftse.csv"
+#path   = open(mypath, "r")
 
 
 data  = pd.read_csv(path,header=0) 
@@ -25,10 +30,28 @@ msg1 = "This program calculates the first order auto correlation of returns, squ
 print(msg1)
 del msg1
 
-stocks = ["all", "allianz", "basf", "bayer", "bmw", "cobank", "daimler",
-          "deutsche bank", "degussa", "dresdner bank", "hoechst", "karstadt", "linde", 
-          "man", "mannesmann", "preussag", "rwe", "schering", "siemens", "thyssen", 
-          "volkswagen"]
+#dax 30 
+stocks = ["all", "adidas", "allianz", "basf", "bmw", "bayer", "beiersdorf", "continental", "covestro",
+          "daimler", "deutsche bank", "deutsche boerse", "deutsche post", "deutsche telekom", 
+          "eon", "fresenius medical care", "fresenius", "heidelbergcement", "henkel", "infineon", "linde", 
+          "lufthansa", "merck", "munich re", "rwe", "sap", "siemens", "thyssen", "volkswagen", 
+          "vonovia", "wirecard"]
+
+#ftse100
+#stocks = ["all", "3i", "admiral", "anglo american", "antofagasta", "ashtead", "british foods", 
+#         "astra zeneca", "aviva", "bae", "barclays", "baratt", "bat", "bhp", "bp", 
+#         "british land", "bt", "bunzl", "burberry", "carnival", "centrica", "coca cola", 
+#         "compass", "crh", "ds smith", "dcc", "diageo", "direct line", "easy jet", 
+#          "evraz", "experian", "fresnillo", "glaxosmith", "glencore", "halma", "hargreaves", 
+#          "hiscox", "hsbc", "imperial", "informa", "intercontinental", "int airlines", 
+#          "intertex", "itv", "sainsbury", "johnson matthey", "just eat", "kingfisher", 
+#          "landsecurities", "legal general", "lloyds", "lse", "marks spencer", "mondi", 
+#          "national grid", "next", "nmc", "ocado", "paddy power", "pearson", "persimmon", 
+#          "phoenix", "prudential", "rbs", "reckitt benckiser", "relx", "rentokil", "rio tinto", 
+#          "rolls royce", "rsa", "sage", "schroders", "scottish mortgage", "segro", "severn trent", 
+#          "shell a", "shell b", "smith nephew", "smiths", "smurfit kappa", "spirax sarco", "sse", 
+#          "st james place", "standard chartered", "sla", "taylor wimpey", "tesco", "berkeley", 
+ #         "tui", "unilever", "united utilities", "vodafone", "whitbread", "wm morrison", "wpp"]
 
 print ("Stocks : ") 
 for i in range(len(stocks)): 
@@ -43,7 +66,7 @@ if s == 0:
     x      = datax.iloc[:,1:]
     st     = stocks[1:]
     shp_x  = x.shape[1]
-    result = pd.DataFrame(data = np.zeros(shape = (shp_x, 7)),
+    result = pd.DataFrame(data = np.zeros(shape = (shp_x+1, 7)),
                           index = st,
                           columns = ["rho(ret):", "rho n(ret^2):",
                                   "rho(|ret|):", "S:", "K:", "JB:",
